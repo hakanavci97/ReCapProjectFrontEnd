@@ -37,7 +37,7 @@ export class BrandComponent implements OnInit {
       return "list-group-item active";
     }
     else{
-      return "list-group-item";
+      return "list-group-item ";
     }
   }
 
