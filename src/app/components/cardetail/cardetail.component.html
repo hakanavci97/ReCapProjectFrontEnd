@@ -1,0 +1,49 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Araç Ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesi giriniz"
+  />
+</div>
+<div>
+  {{filterText}}
+</div>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col"  *ngFor="let carDto of carDtos | filterpipe: filterText" >
+    <div class="card h-100" class="card text-center" >
+      <img 
+      *ngIf="carDto.carImagePath == null"
+      class="card-img-top"
+      src="{{ apiUrl }}/Images/default.jpg"
+      alt="Card image cap"
+    />
+    <img
+      *ngIf="carDto.carImagePath != null"
+      class="card-img-top"
+      src="{{ apiUrl }}{{ carDto.carImagePath }}"
+      alt="Card image cap"
+    />
+      <div class="card-body">
+        <h5 class="card-title">{{ carDto.carName }}</h5>
+        <p class="card-text"></p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{ carDto.brandName }}</li>
+        <li class="list-group-item">
+          {{ carDto.dailyPrice | currency: "TRY":"₺" }}
+        </li>
+      </ul>
+      <div class="card-body" class="d-grid gap-2 d-md-flex justify-content-md-center" >
+        <button type="button" class="btn btn-secondary" routerLink="/cars/carImageDetail/{{carDto.carId}}">Detay</button>
+        <button type="button" class="btn btn-danger" >Kirala</button>
+      </div>
+      
+      <!-- <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div> -->
+    </div>
+  </div>
+</div>

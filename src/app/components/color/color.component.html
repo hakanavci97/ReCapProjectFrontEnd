@@ -1,0 +1,34 @@
+<ul class="list-group">
+  <li
+    class="list-group-item bg-light fw-bold cursor-pointer btn-toggle collapsed"
+    data-bs-toggle="collapse"
+    data-bs-target="#colors-collapse"
+    aria-expanded="true"
+    (click)="ClearCurrentColor()"
+    routerLink="/cars"
+  >
+    Renkler <span class="badge bg-dark total"></span>
+  </li>
+  <div class="collapse hide" id="colors-collapse">
+    <li
+      (click)="setCurrentColor(color)"
+      routerLink="/cars/color/{{ color.id }}"
+      *ngFor="let color of colors"
+      [class]="getCurrentColorClass(color)"
+    >
+      {{ color.name }}
+    </li>
+  </div>
+</ul>
+
+
+<!-- <ul class="list-group">
+  <li (click)="ClearCurrentColor()" routerLink="/cars"  [class]="getAllColorClass()">Tüm Renkler</li>
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/cars/color/{{color.id}}"
+    *ngFor="let color of colors"
+    [class]="getCurrentColorClass(color)">
+    {{color.name }} 
+  </li>
+</ul> -->

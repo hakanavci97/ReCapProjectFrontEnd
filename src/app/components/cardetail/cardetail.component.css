@@ -1,0 +1,10 @@
+.carDetail{
+    float:left;
+    width: 18rem;
+    margin-right: 10px;
+    margin-left: 4px;
+    margin-top:4px;
+}
+.carDetailButton{
+    margin-left: 10px;
+}

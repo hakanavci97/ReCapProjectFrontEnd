@@ -1,0 +1,33 @@
+<ul class="list-group">
+  <li
+    class="list-group-item bg-light fw-bold cursor-pointer btn-toggle collapsed"
+    data-bs-toggle="collapse"
+    data-bs-target="#brands-collapse"
+    aria-expanded="true"  (click)="ClearCurrentBrand()" routerLink="/cars"  
+  >
+    Markalar <span class="badge bg-dark total"></span>
+  </li>
+  <div class="collapse hide" id="brands-collapse">
+    <li
+      (click)="setCurrentBrand(brand)"
+      routerLink="/cars/brand/{{ brand.id }}"
+      *ngFor="let brand of brands"
+      [class]="getCurrentBrandClass(brand)"
+    >
+      {{ brand.name }}
+    </li>
+  </div>
+</ul>
+
+<!-- <ul class="list-group">
+  <li (click)="ClearCurrentBrand()" routerLink="/cars"  [class]="getAllBrandClass()" class="dropdown-item" >Tüm Araçlar</li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{brand.id}}"
+    *ngFor="let brand of brands"
+    [class]="getCurrentBrandClass(brand)">
+    {{brand.name }} 
+  </li>
+</ul> -->
+
+<!-- <h5  *ngIf="currentBrand">{{currentBrand.name}}</h5> -->
